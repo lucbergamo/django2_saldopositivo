@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +12,9 @@
     <h1>Adicionar Gasto Variável</h1><a href="{% url 'index' %}">Voltar</a>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar</button>
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
-
     </div>
     
 </body>
