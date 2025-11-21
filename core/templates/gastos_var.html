@@ -1,14 +1,13 @@
+
+{% extends 'partials/modelo.html' %}
+{% block content %}
+
 {% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        
+
+
+     <main id="main" class="main">
+
+    <div class="pagetitle" >
     <h1>Adicionar Gasto Variável</h1><a href="{% url 'index' %}">Voltar</a>
     <form method="post">
         {% csrf_token %}
@@ -16,6 +15,8 @@
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
     </div>
-    
-</body>
-</html>
+    </div><!-- End Page Title -->
+
+  </main><!-- End #main -->
+    <div class="container">
+{% endblock %}

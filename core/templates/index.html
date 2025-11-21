@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Index</h1>
+{% extends 'partials/modelo.html' %}
+{% block content %}
+ <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+          <h1>Index</h1>
     <a href="{% url 'gastos_var'%}">Gastos Variáveis</a> 
-</body>
-</html>
+    </div><!-- End Page Title -->
+
+
+
+  </main><!-- End #main -->
+
+
+{% endblock %}
