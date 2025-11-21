@@ -1,0 +1,41 @@
+
+{% extends 'partials/modelo.html' %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+
+     <main id="main" class="main">
+
+    <div class="pagetitle" >
+        <h1>Gastos Variáveis</h1><br><br>
+              <!-- Small tables -->
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Gasto</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Tipo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for g in gastos_var_todos %}
+                  <tr>
+                    <td>{{ g.titulo }}</td>
+                    <td>{{g.valor}}</td>
+                    <td>{{g.data_gasto}}</td>
+                    <td>{{g.tipo}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End small tables -->
+
+        <div>
+            <a href="{% url 'gastos_var' %}" >Adicionar Gasto</a>
+        </div>
+    </div><!-- End Page Title -->
+
+  </main><!-- End #main -->
+{% endblock %}

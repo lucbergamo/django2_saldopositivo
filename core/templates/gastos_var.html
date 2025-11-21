@@ -8,11 +8,14 @@
      <main id="main" class="main">
 
     <div class="pagetitle" >
-    <h1>Adicionar Gasto Variável</h1><a href="{% url 'index' %}">Voltar</a>
+    <h1>Adicionar Gasto Variável</h1>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
     </form>
     </div>
     </div><!-- End Page Title -->
