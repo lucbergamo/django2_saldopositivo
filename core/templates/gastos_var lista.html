@@ -27,7 +27,9 @@
                     <td>{{g.valor}}</td>
                     <td>{{g.data_gasto}}</td>
                     <td>{{g.tipo}}</td>
-                    <td><a href="#">  <i class="bi bi-trash"></i></a> </td>
+              
+              
+                    <td><a href="{% url 'delete_gastos_var' %}"> <i class="bi bi-trash"></i></a> </td>
                   </tr>
                   {% endfor %}
                 </tbody>

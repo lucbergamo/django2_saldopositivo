@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Exclusão em JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-link {
+            background-color: #007bff;
+            color: white;
+        }
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Exemplos de Confirmação de Exclusão</h1>
+
+        <h2>1. Usando `confirm()` em um botão</h2>
+        <p>Este é o método mais simples. A função `confirm()` retorna `true` se o usuário clicar em "OK" e `false` se clicar em "Cancelar".</p>
+        <button class="btn-delete" onclick="confirmarExclusaoSimples()">Excluir Registro (Simples)</button>
+        <p id="resultadoSimples" style="margin-top: 10px; font-weight: bold;"></p>
+
+        <hr style="margin: 30px 0;">
+
+        <h2>2. Usando `confirm()` em um link (`<a>`)</h2>
+        <p>Em links, você pode usar o `confirm()` no evento `onclick` e retornar o resultado. Se retornar `false`, a navegação do link é cancelada.</p>
+        <a href="pagina_de_exclusao.php?id=123" class="btn-link" onclick="return confirmarExclusaoLink()" style="text-decoration: none; padding: 10px 15px; border-radius: 4px;">Excluir Registro (Link)</a>
+        <p style="margin-top: 10px; font-style: italic;">(Tente clicar e veja que a navegação só ocorre se você confirmar.)</p>
+
+        <hr style="margin: 30px 0;">
+
+        <h2>3. Confirmação com Parâmetros (Melhor Prática)</h2>
+        <p>Em um cenário real, você passaria o ID do registro para a função de confirmação.</p>
+        <button class="btn-delete" onclick="confirmarExclusaoComParametro(456, 'Usuário João')">Excluir Usuário João (ID 456)</button>
+        <p id="resultadoParametro" style="margin-top: 10px; font-weight: bold;"></p>
+    </div>
+
+    <script>
+        // Exemplo 1: Confirmação Simples em Botão
+        function confirmarExclusaoSimples() {
+            const resultado = document.getElementById('resultadoSimples');
+            // A função confirm() exibe uma caixa de diálogo com uma mensagem e dois botões: OK e Cancelar.
+            if (confirm("Tem certeza que deseja excluir este registro?")) {
+                // Se o usuário clicar em OK (retorna true)
+                resultado.textContent = "Ação: Exclusão confirmada! O registro será excluído.";
+                resultado.style.color = "green";
+                // Aqui você faria a chamada AJAX ou enviaria o formulário para o servidor
+                // Por exemplo: enviarFormularioDeExclusao();
+            } else {
+                // Se o usuário clicar em Cancelar (retorna false)
+                resultado.textContent = "Ação: Exclusão cancelada.";
+                resultado.style.color = "red";
+            }
+        }
+
+        // Exemplo 2: Confirmação em Link
+        function confirmarExclusaoLink() {
+            // Se o usuário confirmar, a função retorna true e o link é seguido.
+            // Se o usuário cancelar, a função retorna false, o que impede a ação padrão do link (navegação).
+            return confirm("ATENÇÃO: Você está prestes a ser redirecionado para a página de exclusão. Deseja continuar?");
+        }
+
+        // Exemplo 3: Confirmação com Parâmetros
+        function confirmarExclusaoComParametro(id, nome) {
+            const resultado = document.getElementById('resultadoParametro');
+            const mensagem = `Tem certeza que deseja excluir o registro "${nome}" (ID: ${id})? Esta ação é irreversível.`;
+
+            if (confirm(mensagem)) {
+                // Se o usuário confirmar
+                resultado.textContent = `Ação: Exclusão do registro ${id} (${nome}) confirmada!`;
+                resultado.style.color = "green";
+                // Aqui você faria a chamada real para o servidor, passando o ID
+                // Por exemplo: excluirRegistroNoServidor(id);
+            } else {
+                // Se o usuário cancelar
+                resultado.textContent = `Ação: Exclusão do registro ${id} (${nome}) cancelada.`;
+                resultado.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>
