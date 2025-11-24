@@ -32,7 +32,7 @@ def edit_gastos_var(request, pk):
         return render(request, 'delete_gastos_var.html', {'form':form, 'edit_Gasto': editGasto})  
 
 def delete_gastos_var(request):
-   return render(request, 'teste_js')
+   return render(request, 'teste_js.html')
    ''' deleteGasto = get_object_or_404(GastoVariavel)
     if request.method == 'POST':
         de.delete()
