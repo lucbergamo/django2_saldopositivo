@@ -361,6 +361,31 @@
   <script src="{% static 'vendor/simple-datatables/simple-datatables.js' %}"></script>
   <script src="{% static 'vendor/tinymce/tinymce.min.js' %}"></script>
   <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script>
+    // Exemplo 1: Confirmação Simples em Botão
+    function confirmarExclusaoSimples() {
+        const resultado = document.getElementById('resultadoSimples');
+        // A função confirm() exibe uma caixa de diálogo com uma mensagem e dois botões: OK e Cancelar.
+        if (confirm("Tem certeza que deseja excluir este registro?")) {
+            // Se o usuário clicar em OK (retorna true)
+            resultado.textContent = "Ação: Exclusão confirmada! O registro será excluído.";
+            resultado.style.color = "green";
+            // Aqui você faria a chamada AJAX ou enviaria o formulário para o servidor
+            // Por exemplo: enviarFormularioDeExclusao();
+        } else {
+            // Se o usuário clicar em Cancelar (retorna false)
+            resultado.textContent = "Ação: Exclusão cancelada.";
+            resultado.style.color = "red";
+        }
+    }
+
+    // Exemplo 2: Confirmação em Link
+    function confirmarExclusaoLink() {
+        // Se o usuário confirmar, a função retorna true e o link é seguido.
+        // Se o usuário cancelar, a função retorna false, o que impede a ação padrão do link (navegação).
+        return confirm("ATENÇÃO: Você está prestes a ser redirecionado para a página de exclusão. Deseja continuar?");
+    }
+</script>
 
   <!-- Template Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>

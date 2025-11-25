@@ -17,7 +17,6 @@
                     <th scope="col">Valor</th>
                     <th scope="col">Data</th>
                     <th scope="col">Tipo</th>
-                    <th scope="col">Excluir</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -26,10 +25,7 @@
                     <td><a href="{% url 'edit_gastos_var' pk=g.id %}">{{ g.titulo }}</a> </td>
                     <td>{{g.valor}}</td>
                     <td>{{g.data_gasto}}</td>
-                    <td>{{g.tipo}}</td>
-              
-              
-                    <td><a href="{% url 'delete_gastos_var' %}"> <i class="bi bi-trash"></i></a> </td>
+                    <td>{{g.tipo}}</td>                 
                   </tr>
                   {% endfor %}
                 </tbody>

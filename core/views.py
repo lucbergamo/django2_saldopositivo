@@ -29,13 +29,11 @@ def edit_gastos_var(request, pk):
             form.save()
             return redirect('gastos_var_lista')
     else:
-        return render(request, 'delete_gastos_var.html', {'form':form, 'edit_Gasto': editGasto})  
+        form = GastoVariavelForm(instance=editGasto)
+        return render(request, 'edit_gastos_var.html', {'form':form, 'edit_Gasto': editGasto})  
 
-def delete_gastos_var(request):
-   return render(request, 'teste_js.html')
-   ''' deleteGasto = get_object_or_404(GastoVariavel)
-    if request.method == 'POST':
-        de.delete()
+def delete_gastos_var(request, pk):
+   deleteGasto = get_object_or_404(GastoVariavel)
+   if request.method == 'POST':
+        deleteGasto.delete()
         return redirect('teste_js')
-    else:'''
-           
