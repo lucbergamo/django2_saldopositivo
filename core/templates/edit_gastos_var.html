@@ -14,8 +14,13 @@
         {% csrf_token %}
         {{ form|crispy }}
         
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+        <div class="row">
+            <div class="d-flex justify-content-center col">
+                <button type="submit" class="btn btn-primary w-50">Enviar</button>     
+            </div>  
+            <div class="d-flex justify-content-center col">
+            <button type="submit" class="btn btn-danger w-50"  onclick="confirmarExclusaoSimples()">Excluir</button>
+            </div>
         </div>
     </form>
     </div>
