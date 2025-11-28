@@ -1,5 +1,5 @@
 from django import forms
-from core.models import GastoVariavel
+from core.models import GastoVariavel, RegistroGastoFixo, GastoFixo
 
 class GastoVariavelForm(forms.ModelForm):
     class Meta:
@@ -14,3 +14,16 @@ class GastoVariavelForm(forms.ModelForm):
                 'type': 'text' # Importante: Define como 'text' para que o navegador não use o datepicker nativo
             })
         }
+
+
+class RegistroGastoFixoForm(forms.ModelForm):
+    class Meta:
+        model = RegistroGastoFixo
+        fields = ['gasto_fixo', 'data_pagamento', 'valor_pago']
+
+
+class GastoFixoForm(forms.ModelForm):
+    class Meta:
+        model = GastoFixo
+        fields = ['gasto_fixo', 'data_pagamento', 'valor_pago']
+
