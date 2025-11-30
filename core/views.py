@@ -1,7 +1,7 @@
 from django.http import HttpResponse , request
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import GastoVariavelForm
-from .models import GastoVariavel
+from .forms import GastoVariavelForm, GastoFixoForm
+from .models import GastoVariavel, GastoFixo
 
 def index(request):
     return render(request, 'index.html')
@@ -44,13 +44,32 @@ def delete_gastos_var(request, pk):
         resultado = excluir_gasto(pk)
         return redirect('gastos_var_lista')
 
-# ================    GASTOS FIXOS ====================================
-def novo_gastos_fixo():
-    pass
-def gastos_fixo_lista():
-    pass
-def edit_gastos_fixo():
-    pass
+# ===================    GASTOS FIXOS ====================================
+def novo_gastos_fixo(request):
+    if request.method == 'POST':
+        form = GastoFixoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('gastos_fixo_lista')
+    else:
+        form = GastoFixoForm()
+        return render(request, 'novo_gastos_fixo.html', {'form':form})
+    
+def gastos_fixo_lista(request):
+    gastos_fixos = GastoFixo.objects.all().order_by('criado')
+    context = {"gastos_fixos_todos": gastos_fixos}
+    return render(request, 'gastos_fixo_lista.html', context)
+
+def edit_gastos_fixo(request,pk):
+    editGastoFixo = get_object_or_404(GastoFixo, pk=pk)
+    if request.method == 'POST':
+        form = GastoFixoForm(request.POST, instance=editGastoFixo)
+        if form.is_valid():
+            form.save()
+            return redirect('gastos_fixo_lista')
+    else:
+        form = GastoFixoForm(instance=editGastoFixo)
+        return render(request, 'edit_gastos_fixo.html', {'form':form, 'edit_Gasto': editGastoFixo})  
 def registro_gasto_fixo():
     pass
 def lista_registro_fixo():

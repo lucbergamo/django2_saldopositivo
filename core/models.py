@@ -19,15 +19,15 @@ class GastoVariavel(models.Model):
 
 class GastoFixo(models.Model):
     titulo = models.CharField(max_length=200)
-    criado = models.DateField(auto_now_add=True)
+    criado = models.DateField()
     dia_pagamento = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(31)],
         help_text="Dia do mês em que normalmente se paga este gasto (1 a 31).")
     
     bancoPagador = models.CharField(max_length=500)
 
     def __str__(self):
-        return f"{self.titulo}"
-    
+        return f"{self.titulo}" 
+
 class RegistroGastoFixo(models.Model):
     gasto_fixo = models.ForeignKey(
         GastoFixo,
