@@ -1,5 +1,5 @@
 from django import forms
-from core.models import GastoVariavel, GastoFixo
+from core.models import GastoVariavel, GastoFixo, RegistroGastoFixo
 
 class GastoVariavelForm(forms.ModelForm):
     class Meta:
@@ -16,10 +16,10 @@ class GastoVariavelForm(forms.ModelForm):
         }
 
 
-'''class RegistroGastoFixoForm(forms.ModelForm):
+class RegistroGastoFixoForm(forms.ModelForm):
     class Meta:
         model = RegistroGastoFixo
-        fields = ['gasto_fixo', 'data_pagamento', 'valor_pago']'''
+        fields = ['gasto_fixo', 'dataPagamento', 'valorPago']
 
 
 class GastoFixoForm(forms.ModelForm):
