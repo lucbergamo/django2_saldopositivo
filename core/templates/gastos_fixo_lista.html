@@ -16,14 +16,16 @@
                     <th scope="col">Titulo</th>
                     <th scope="col">Data de Pagamento</th>
                     <th scope="col">Banco Pagador</th>
+                    <th scope="col">Forma de Pagamento</th>
                   </tr>
                 </thead>
                 <tbody>
                     {% for g in gastos_fixos_todos %}
                   <tr>
-                    <td><a href="{% url 'edit_gastos_var' pk=g.id %}">{{ g.titulo }}</a> </td>
+                    <td><a href="{% url 'edit_gastos_fixo' pk=g.id %}">{{ g.titulo }}</a> </td>
                     <td>{{g.dia_pagamento}}</td>
-                    <td>{{g.bancoPagador}}</td>               
+                    <td>{{g.bancoPagador}}</td>
+                    <td>{{g.formaPagamento}}</td>                    
                   </tr>
                   {% endfor %}
                 </tbody>

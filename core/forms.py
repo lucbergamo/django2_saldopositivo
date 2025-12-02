@@ -25,5 +25,5 @@ class RegistroGastoFixoForm(forms.ModelForm):
 class GastoFixoForm(forms.ModelForm):
     class Meta:
         model = GastoFixo
-        fields = ['titulo', 'dia_pagamento', 'bancoPagador', 'criado']
+        fields = ['titulo', 'dia_pagamento','formaPagamento', 'bancoPagador', 'criado']
 

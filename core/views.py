@@ -1,7 +1,7 @@
 from django.http import HttpResponse , request
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import GastoVariavelForm, GastoFixoForm
-from .models import GastoVariavel, GastoFixo, RegistroGastoFixo
+from .forms import GastoVariavelForm, GastoFixoForm, RegistroGastoFixoForm
+from .models import GastoVariavel, GastoFixo
 
 def index(request):
     return render(request, 'index.html')
@@ -56,7 +56,7 @@ def novo_gastos_fixo(request):
         return render(request, 'novo_gastos_fixo.html', {'form':form})
     
 def gastos_fixo_lista(request):
-    gastos_fixos = GastoFixo.objects.all().order_by('criado')
+    gastos_fixos = GastoFixo.objects.all().order_by('dia_pagamento')
     context = {"gastos_fixos_todos": gastos_fixos}
     return render(request, 'gastos_fixo_lista.html', context)
 
@@ -73,13 +73,10 @@ def edit_gastos_fixo(request,pk):
      
 def registro_gasto_fixo(request):
     if request.method == 'POST':
-        form = GastoVariavelForm(request.POST)
+        form = RegistroGastoFixoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('gastos_var')
+            return redirect('registro_gasto_fixo')
     else:
-        form = GastoVariavelForm()
-    return render(request, 'gastos_var.html', {'form':form})
-
-def lista_registro_fixo(request):
-    pass
+        form = RegistroGastoFixoForm()
+    return render(request, 'registro_gasto_fixo.html', {'form':form})

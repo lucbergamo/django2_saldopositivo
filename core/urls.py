@@ -15,6 +15,5 @@ urlpatterns = [
     path('novo_gastos_fixo/', views.novo_gastos_fixo, name='novo_gastos_fixo'), 
     path('gastos_fixo_lista/', views.gastos_fixo_lista, name='gastos_fixo_lista'),
     path('edit_gastos_fixo/<int:pk>', views.edit_gastos_fixo, name='edit_gastos_fixo'),
-    path('registro_gasto_fixo/', views.registro_gasto_fixo, name='registro_gasto_fixo'),
-    path('lista_registro_fixo/', views.lista_registro_fixo, name='lista_registro_fixo')
+    path('registro_gasto_fixo/', views.registro_gasto_fixo, name='registro_gasto_fixo')
 ]
