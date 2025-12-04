@@ -36,6 +36,7 @@ class GastoFixo(models.Model):
         return f"{self.titulo}" 
 
 class RegistroGastoFixo(models.Model):
+
     gasto_fixo = models.ForeignKey(
         GastoFixo,
         on_delete=models.PROTECT,       # evita apagar um gasto enquanto há registros
@@ -47,3 +48,11 @@ class RegistroGastoFixo(models.Model):
 
     def __str__(self):
         return f"{self.titulo} - {self.valorPago}"
+    
+class ReceitaFixa(models.Model):
+    titulo = models.CharField(max_length=80)
+    dataRecebimento = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(31)],
+        help_text="Dia do mês em que normalmente se paga este gasto (1 a 31).")
+    receitaEsperada = models.DecimalField(max_digits=10, decimal_places=2)
+    bancoRecebedor = models.CharField(max_length=50)
+ #   criado = models.DateField(auto_now_add=True)

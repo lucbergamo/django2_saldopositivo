@@ -1,7 +1,7 @@
 from django.http import HttpResponse , request
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import GastoVariavelForm, GastoFixoForm, RegistroGastoFixoForm
-from .models import GastoVariavel, GastoFixo
+from .forms import GastoVariavelForm, GastoFixoForm, RegistroGastoFixoForm, ReceitaFixaForm
+from .models import GastoVariavel, GastoFixo, ReceitaFixa
 
 def index(request):
     return render(request, 'index.html')
@@ -80,3 +80,14 @@ def registro_gasto_fixo(request):
     else:
         form = RegistroGastoFixoForm()
     return render(request, 'registro_gasto_fixo.html', {'form':form})
+
+# ================ RECEITAS FIXAS ==========================================
+def novo_rec_fixa(request):
+    if request.method == 'POST':
+        form = ReceitaFixaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('novo_rec_fixa')
+    else:
+        form = ReceitaFixaForm()
+    return render(request, 'novo_rec_fixa.html', {'form':form})

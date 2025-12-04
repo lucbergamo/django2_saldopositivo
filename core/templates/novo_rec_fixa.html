@@ -1,0 +1,24 @@
+
+{% extends 'partials/modelo.html' %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+
+     <main id="main" class="main">
+
+    <div class="pagetitle" >
+    <h1>Incluir Gasto Fixo</h1><br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </form>
+    </div>
+    </div><!-- End Page Title -->
+  </main><!-- End #main -->
+    <div class="container">
+{% endblock %}
