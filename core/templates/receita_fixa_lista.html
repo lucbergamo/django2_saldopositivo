@@ -21,7 +21,7 @@
                 <tbody>
                     {% for g in lista_rec_fixa %}
                   <tr>
-                    <td><a href="{% url 'edit_gastos_fixo' pk=g.id %}">{{ g.titulo }}</a> </td>
+                    <td><a href="{% url 'edit_rec_fixa' pk=g.id %}">{{ g.titulo }}</a> </td>
                     <td>{{g.dataRecebimento}}</td>
                     <td>{{g.receitaEsperada}}</td>                   
                   </tr>

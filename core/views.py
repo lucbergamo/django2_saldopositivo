@@ -98,13 +98,13 @@ def lista_rec_fixa(request):
     return render(request, 'receita_fixa_lista.html', context)
 
 def edit_rec_fixa(request,pk):
-    editGastoFixo = get_object_or_404(GastoFixo, pk=pk)
+    editReceitaFixa = get_object_or_404(ReceitaFixa, pk=pk)
     if request.method == 'POST':
-        form = GastoFixoForm(request.POST, instance=editGastoFixo)
+        form = ReceitaFixaForm(request.POST, instance=editReceitaFixa)
         if form.is_valid():
             form.save()
-            return redirect('gastos_fixo_lista')
+            return redirect('lista_rec_fixa')
     else:
-        form = GastoFixoForm(instance=editGastoFixo)
-        return render(request, 'edit_gastos_fixo.html', {'form':form, 'edit_Gasto': editGastoFixo}) 
+        form = ReceitaFixaForm(instance=editReceitaFixa)
+        return render(request, 'edit_rec_fixa.html', {'form':form, 'edit_rec_fixa': editReceitaFixa}) 
      
