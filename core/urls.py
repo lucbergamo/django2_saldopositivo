@@ -18,5 +18,7 @@ urlpatterns = [
     path('registro_gasto_fixo/', views.registro_gasto_fixo, name='registro_gasto_fixo'),
 
     # Receitas Fixas
-    path('novo_rec_fixa/', views.novo_rec_fixa, name='novo_rec_fixa')
+    path('novo_rec_fixa/', views.novo_rec_fixa, name='novo_rec_fixa'),
+    path('lista_rec_fixa/', views.lista_rec_fixa, name='lista_rec_fixa'),
+    path('edit_rec_fixa/<int:pk>', views.edit_rec_fixa, name='edit_rec_fixa'),
 ]

@@ -1,0 +1,39 @@
+
+{% extends 'partials/modelo.html' %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+
+     <main id="main" class="main">
+
+    <div class="pagetitle" >
+        <h1>Receitas Fixas</h1><br><br>
+              <!-- Small tables -->
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Data Pagamento</th>
+                    <th scope="col">Receita Esperada</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for g in lista_rec_fixa %}
+                  <tr>
+                    <td><a href="{% url 'edit_gastos_fixo' pk=g.id %}">{{ g.titulo }}</a> </td>
+                    <td>{{g.dataRecebimento}}</td>
+                    <td>{{g.receitaEsperada}}</td>                   
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End small tables -->
+
+        <div>
+            <a href="{% url 'novo_rec_fixa' %}" >Adicionar Receita Fixa</a>
+        </div>
+    </div><!-- End Page Title -->
+
+  </main><!-- End #main -->
+{% endblock %}
