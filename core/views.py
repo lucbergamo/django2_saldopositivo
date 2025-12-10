@@ -2,6 +2,7 @@ from django.http import HttpResponse , request
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import GastoVariavelForm, GastoFixoForm, RegistroGastoFixoForm, ReceitaFixaForm
 from .models import GastoVariavel, GastoFixo, ReceitaFixa
+from django.contrib import messages
 
 def index(request):
     return render(request, 'index.html')
@@ -29,6 +30,7 @@ def edit_gastos_var(request, pk):
         form = GastoVariavelForm(request.POST, instance=editGasto)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Gasto Variável editado com sucesso!')
             return redirect('gastos_var_lista')
     else:
         form = GastoVariavelForm(instance=editGasto)
@@ -50,6 +52,7 @@ def novo_gastos_fixo(request):
         form = GastoFixoForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Gasto Fixo criada com sucesso!')
             return redirect('gastos_fixo_lista')
     else:
         form = GastoFixoForm()
@@ -66,6 +69,7 @@ def edit_gastos_fixo(request,pk):
         form = GastoFixoForm(request.POST, instance=editGastoFixo)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Gasto FIxo editado com sucesso!')
             return redirect('gastos_fixo_lista')
     else:
         form = GastoFixoForm(instance=editGastoFixo)
@@ -87,7 +91,8 @@ def novo_rec_fixa(request):
         form = ReceitaFixaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('novo_rec_fixa')
+            messages.success(request, 'Receita Fixa criada com sucesso!')
+            return redirect('lista_rec_fixa')
     else:
         form = ReceitaFixaForm()
     return render(request, 'novo_rec_fixa.html', {'form':form})
@@ -103,6 +108,7 @@ def edit_rec_fixa(request,pk):
         form = ReceitaFixaForm(request.POST, instance=editReceitaFixa)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Receita Fixa editada com sucesso!')
             return redirect('lista_rec_fixa')
     else:
         form = ReceitaFixaForm(instance=editReceitaFixa)
