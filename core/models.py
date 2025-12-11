@@ -56,3 +56,18 @@ class ReceitaFixa(models.Model):
     receitaEsperada = models.DecimalField(max_digits=10, decimal_places=2)
     bancoRecebedor = models.CharField(max_length=50)
  #   criado = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.titulo}" 
+
+class RegistroReceitaFixa(models.Model):
+    receita_fixa = models.ForeignKey(
+        ReceitaFixa,
+        on_delete=models.PROTECT,       # evita apagar um gasto enquanto há registros
+        related_name='registros'
+    )
+    dataRecebimento = models.DateField()
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    def __str__(self):
+        return f"{self.titulo} - {self.valor}"

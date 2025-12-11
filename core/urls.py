@@ -21,4 +21,5 @@ urlpatterns = [
     path('novo_rec_fixa/', views.novo_rec_fixa, name='novo_rec_fixa'),
     path('lista_rec_fixa/', views.lista_rec_fixa, name='lista_rec_fixa'),
     path('edit_rec_fixa/<int:pk>', views.edit_rec_fixa, name='edit_rec_fixa'),
+    path('registro_rec_fixa/', views.registro_rec_fixa, name='registro_rec_fixa')
 ]

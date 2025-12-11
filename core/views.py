@@ -1,7 +1,7 @@
 from django.http import HttpResponse , request
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import GastoVariavelForm, GastoFixoForm, RegistroGastoFixoForm, ReceitaFixaForm
-from .models import GastoVariavel, GastoFixo, ReceitaFixa
+from .forms import GastoVariavelForm, GastoFixoForm, RegistroGastoFixoForm, ReceitaFixaForm, RegistroReceitaFixaForm
+from .models import GastoVariavel, GastoFixo, ReceitaFixa, RegistroReceitaFixa
 from django.contrib import messages
 
 def index(request):
@@ -112,5 +112,16 @@ def edit_rec_fixa(request,pk):
             return redirect('lista_rec_fixa')
     else:
         form = ReceitaFixaForm(instance=editReceitaFixa)
-        return render(request, 'edit_rec_fixa.html', {'form':form, 'edit_rec_fixa': editReceitaFixa}) 
+        return render(request, 'edit_rec_fixa.html', {'form':form, 'edit_rec_fixa': editReceitaFixa})
+    
+def registro_rec_fixa(request):
+    if request.method == 'POST':
+        form = RegistroReceitaFixaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Registro de Receita Fixa criada com sucesso!')
+            return redirect('lista_rec_fixa')
+    else:
+        form = RegistroReceitaFixaForm()
+    return render(request, 'registro_rec_fixa.html', {'form':form})
      
